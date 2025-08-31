@@ -1,0 +1,11 @@
+.gallery.masonry {
+  column-count: 2;   /* 2 kolom untuk mobile */
+  column-gap: 8px;
+  padding: 12px;
+}
+.gallery.masonry img {
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  display: block;
+}

@@ -1,0 +1,417 @@
+<html lang="en">
+         <head>
+          <meta charset="utf-8"/>
+          <meta content="width=device-width, initial-scale=1" name="viewport"/>
+          <title>
+           Wedding Invitation
+          </title>
+          <script src="https://cdn.tailwindcss.com">
+          </script>
+          <link rel="icon" href="./img/favicon.png" type="image/png">
+          <!-- css -->
+          <link rel="stylesheet" href="./gallery.css">
+
+          <!-- font -->
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carattere&family=Oranienbaum&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+          <style>
+           body {
+              font-family: 'script', cursive;
+            }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+          </style>
+         </head>
+         <body>
+    <!-- bagian ndas -->
+    <section class="relative w-auto bg-white flex flex-col">
+  <!-- Foto 16:9 nempel atas -->
+  <div class="w-auto aspect-video relative  mb-9">
+    <img src="./img/ft5.jpg" alt="wedding photo" 
+         class="w-full h-full object-cover" />
+    <!-- overlay gradasi bawah -->
+    <div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent"></div>
+  </div>
+
+  <!-- Konten teks -->
+  <div class="text-center px-6 mt-8 reveal slide-up opacity-0 translate-y-10 transition-all duration-700">
+    <p class="text-lg text-[#758673] font-['Oranienbaum']">The Wedding Of</p>
+    <h1 class="text-5xl font-['Carattere'] text-[#758673] my-3">Bro &amp; Sis</h1>
+    <p class="text-lg font-['Teachers'] text-[#758673] mb-4">Jum’at, 18 Agustus 2029</p>
+    
+    <!-- Tombol CTA -->
+        <button onclick="openModal()" 
+      class="bg-[#758673] text-white font-['Teachers'] px-6 py-3 rounded-lg shadow-md hover:bg-[#2a4d25] transition">
+      Save the Date
+    </button>
+    
+    <!-- Popup Modal -->
+    <div id="saveDateModal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-2xl shadow-lg max-w-md w-full p-6 text-center relative font-['Teachers']">
+        
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-[#4B0082] text-xl">&times;</button>
+        
+        <!-- Title -->
+        <h2 class="text-2xl font-['Carattere'] text-[#758673] mb-4">Save the Date</h2>
+        
+        <!-- Content -->
+        <p class="text-gray-700 mb-6 font-['Teachers']">
+          Tambahkan acara ini ke kalender Google kamu, jangan sampai kelewatan ya ✨
+        </p>
+        
+        <!-- Link ke Google Calendar -->
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Bro+%26+Sis&dates=20251212T090000Z/20251212T110000Z&details=Undangan+pernikahan&location=Jakarta"
+           target="_blank"
+           class="bg-[#758673] text-white px-5 py-2 rounded-lg shadow-md hover:bg-[#2a4d25] transition font-['Teachers']">
+          Tambahkan ke Google Calendar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- our special day -->
+<section>
+  <img class="w-full h-auto mt-8" src="./img/dv-ats.png">
+  <section class="bg-[#758673] py-7">
+    <h1 class="text-center text-white font-['Carattere'] text-4xl animate-fadeInUp"> Our Special Day</h1>
+    <br>
+  <div id="countdown" class="flex justify-center space-x-4 text-white font-['Oranienbaum']">
+    <div class="flex flex-col items-center">
+      <span id="days" class="text-3xl">0</span>
+      <span class="text-sm">Hari</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="hours" class="text-3xl">0</span>
+      <span class="text-sm">Jam</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="minutes" class="text-3xl">0</span>
+      <span class="text-sm">Menit</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <span id="seconds" class="text-3xl">0</span>
+      <span class="text-sm">Detik</span>
+    </div>
+  </div>
+
+  </section>
+  <img class="w-full h-auto" src="./img/dv-bwh.png">
+</section>
+
+<!-- pemanggilan -->
+    <div id="mempelai"></div>
+    <div id="acara"></div>
+    <div id="story"></div>
+    <div id="gallery"></div>
+    <div id="closing"></div>
+
+
+<!-- RSVP -->
+<section id="rsvp" class="pt-8 bg-gray-100">
+  <div class="container mx-auto max-w-2xl">
+    <!-- Judul -->
+    <h2 class="text-5xl font-['Carattere'] text-center mb-6 text-[#758673]">Ucapkan Sesuatu</h2>
+    
+        <!-- Rekap Count -->
+    <div class="grid grid-cols-3 gap-4 text-center mb-8 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-3xl font-['Oranienbaum'] text-[#758673]" id="countHadir">0</h3>
+        <p class="font-['Teachers'] text-gray-600 text-sm">Hadir</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-3xl font-['Oranienbaum'] text-[#758673]" id="countTidak">0</h3>
+        <p class="font-['Teachers'] text-gray-600 text-sm">Tidak Hadir</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-3xl font-['Oranienbaum'] text-[#758673]" id="countRagu">0</h3>
+        <p class="text-gray-600 font-['Teachers'] text-sm">Masih Ragu</p>
+      </div>
+    </div>
+
+    <!-- Form RSVP -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg mb-8 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+      <form id="rsvpForm" class="space-y-4">
+        <input type="text" id="nama" placeholder="Nama" required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#758673] font-['Teachers']">
+
+        <select id="status" required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-['758673'] font-['Teachers']">
+          <option value="" disabled selected>Konfirmasi Kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+          <option value="Ragu">Ragu</option>
+        </select>
+
+        <textarea id="ucapan" placeholder="Tulis ucapan..." rows="3"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#758673] font-['Teachers']"></textarea>
+
+        <button type="submit"
+          class="w-full bg-[#758673] text-white py-2 rounded-lg hover:bg-[#2a4d25] font-['Oranienbaum'] transition">
+          Kirim
+        </button>
+      </form>
+    </div>
+
+    <!-- List Ucapan -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+      <h3 class="text-lg font-['Oranienbaum'] mb-4 text-gray-700">Ucapan &amp; Doa</h3>
+      <div id="listUcapan" class="space-y-4">
+        <!-- Data ucapan dari Firebase muncul di sini -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- panggil footer -->
+<div id="footer"></div>
+
+
+           
+          <audio id="bg-music" autoplay loop>
+            <source src="./musik/bgm.mp3" type="audio/mpeg">
+          </audio>
+          
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { 
+  getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+// Konfigurasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAGLlZBmPDJFgunf128yTQTy2umPzQIZMA",
+  authDomain: "undangan-brosis.firebaseapp.com",
+  projectId: "undangan-brosis",
+  storageBucket: "undangan-brosis.appspot.com",
+  messagingSenderId: "860222906014",
+  appId: "1:860222906014:web:efe0968a9f22f58638e58f",
+  measurementId: "G-6GQ3W0BLLF"
+};
+
+// Init Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// GANTI NAMA COLLECTION SESUAI KLIEN
+const collectionName = "rsvp_clientA";
+
+// Handle submit form RSVP
+const form = document.getElementById("rsvpForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nama = document.getElementById("nama").value.trim();
+  const status = document.getElementById("status").value;
+  const ucapan = document.getElementById("ucapan").value.trim();
+
+  try {
+    await addDoc(collection(db, collectionName), {
+      nama,
+      status,
+      ucapan,
+      createdAt: serverTimestamp()
+    });
+
+    form.reset();
+    alert("Terima kasih, data berhasil dikirim!");
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Gagal mengirim data. Cek console untuk detailnya.");
+  }
+});
+
+// Realtime listener
+const listUcapan = document.getElementById("listUcapan");
+const countHadir = document.getElementById("countHadir");
+const countTidak = document.getElementById("countTidak");
+const countRagu = document.getElementById("countRagu");
+
+const q = query(collection(db, collectionName), orderBy("createdAt", "desc"));
+onSnapshot(q, (snapshot) => {
+  let hadir = 0, tidak = 0, ragu = 0;
+  listUcapan.innerHTML = "";
+
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+
+    if (data.status === "Hadir") hadir++;
+    if (data.status === "Tidak Hadir") tidak++;
+    if (data.status === "Ragu") ragu++;
+
+    if (data.ucapan && data.ucapan.trim() !== "") {
+      listUcapan.innerHTML += `
+        <div class="border-b pb-2">
+          <p class="font-['Oranienbaum'] font-semibold">${data.nama}</p>
+          <p class="text-gray-600 text-sm font-['Teachers']">${data.ucapan}</p>
+        </div>
+      `;
+    }
+  });
+
+  countHadir.textContent = hadir;
+  countTidak.textContent = tidak;
+  countRagu.textContent = ragu;
+});
+</script>
+
+          
+          <script>
+            //musik
+window.addEventListener("DOMContentLoaded", () => {
+            const music = document.getElementById("bg-music");
+        
+            // coba autoplay
+            music.play().catch(() => {
+              console.log("Autoplay diblokir, munculin popup manual");
+        
+              // bikin popup kecil
+              const popup = document.createElement("div");
+              popup.innerHTML = `
+                <div class="fixed bottom-4 right-4 bg-[#758673] text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 cursor-pointer animate-bounce">
+                  🎵
+                </div>
+              `;
+              
+              popup.onclick = () => {
+                music.play();
+                popup.remove(); // ilangin popup setelah musik nyala
+              };
+        
+              document.body.appendChild(popup);
+            });
+          });
+            
+            // pop up kalender //
+      function openModal() {
+        document.getElementById('saveDateModal').classList.remove('hidden');
+      }
+      function closeModal() {
+        document.getElementById('saveDateModal').classList.add('hidden');
+      }
+  
+  //countdown
+    // Set tanggal target
+  const targetDate = new Date("Aug 18, 2028 08:00:00").getTime();
+
+  const countdown = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    // Hitung hari, jam, menit, detik
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Update ke elemen HTML
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    // Kalau sudah lewat tanggal
+    if (distance < 0) {
+      clearInterval(countdown);
+      document.getElementById("countdown").innerHTML = "<span class='text-red-600'>Acara sudah dimulai 🎉</span>";
+    }
+  }, 1000);
+  //countdown
+      
+      //animasi
+      const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+
+      // Slide dari kiri
+      if (el.classList.contains("slide-left")) {
+        el.classList.remove("opacity-0", "-translate-x-10");
+        el.classList.add("opacity-100", "translate-x-0");
+      }
+
+      // Slide dari kanan
+      if (el.classList.contains("slide-right")) {
+        el.classList.remove("opacity-0", "translate-x-10");
+        el.classList.add("opacity-100", "translate-x-0");
+      }
+      
+      // slide-down
+if (el.classList.contains("slide-down")) {
+  el.classList.remove("opacity-0", "-translate-y-10");
+  el.classList.add("opacity-100", "translate-y-0");
+}
+
+
+      // Slide dari bawah
+      if (el.classList.contains("slide-up")) {
+        el.classList.remove("opacity-0", "translate-y-10");
+        el.classList.add("opacity-100", "translate-y-0");
+      }
+
+      // Fade in
+      if (el.classList.contains("fade-in")) {
+        el.classList.remove("opacity-0");
+        el.classList.add("opacity-100");
+      }
+
+      // Zoom in
+      if (el.classList.contains("zoom-in")) {
+        el.classList.remove("opacity-0", "scale-95");
+        el.classList.add("opacity-100", "scale-100");
+      }
+
+      // Kalau sudah kelihatan, stop observe biar ga diulang
+      observer.unobserve(el);
+    }
+  });
+});
+
+// Observe semua elemen dengan class .reveal
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      // jurus pemanggil section //
+          //panggil section
+  function loadSection(id, url) {
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Gagal load " + url);
+      }
+      return response.text();
+    })
+    .then(data => {
+      const container = document.getElementById(id);
+      container.innerHTML = data;
+
+      // Re-observe elemen baru yang ada .reveal
+      container.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+}
+      // ritual pemanggilan section //
+      loadSection("mempelai", "./mempelai.html");
+      loadSection("acara", "./acara.html");
+      loadSection("story", "./story.html");
+      loadSection("gallery", "./gallery.html");
+      loadSection("closing", "./closing.html");
+      loadSection("footer", "./footer.html");
+          </script>
+         </body>
+</html>
